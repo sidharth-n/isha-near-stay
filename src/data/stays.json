@@ -1,0 +1,916 @@
+[
+  {
+    "id": 1,
+    "name": "Alayam, Nadhi, Nalanda, Brahmaputra, Sivapadam 3, Sivapadam 4",
+    "category": "Accommodation Inside Isha Yoga Center",
+    "distance": "Inside Ashram",
+    "contact": "For Indian Guests: ishastay@ishafoundation.org<br/>For Overseas and NRI: overseas.info@ishafoundation.org",
+    "mapLink": "https://cottage.isha.in/",
+    "amenities": [
+      "Beds: Depending on the cottage, queen/twin setups",
+      "Fans: Ceiling fans standard in most rooms",
+      "Air conditioning: Available in select cottages",
+      "Toilets: Private western-style or shared facilities in dorms",
+      "Storage: Simple built-in shelves and under-bed storage",
+      "Linens: Simple linens provided; extra blankets on request",
+      "Meals: Two vegetarian meals (brunch and dinner) daily at Bhiksha Hall",
+      "Hot water: Potable hot water available outside each cottage block",
+      "Cleaning: Strict hygiene standards with regular maintenance"
+    ],
+    "transport": [
+      "This accommodation is inside ashram."
+    ],
+    "description": ""
+  },
+  {
+    "id": 2,
+    "name": "MS Home Stays",
+    "category": "Home Stays Near Isha Yoga Center",
+    "distance": "6 kms",
+    "contact": "8248353061",
+    "mapLink": "https://maps.app.goo.gl/2KyGX9vr868SeY2p9",
+    "amenities": [
+      "High-Speed WiFi",
+      "Fully Equipped Kitchen",
+      "Cooking Utensils Provided",
+      "Bath Towels (one per guest)",
+      "Hand Towels",
+      "Complimentary Toothpaste",
+      "Shower Gel & Shampoo",
+      "Hot Water 24/7",
+      "Consecrated RO Drinking Water",
+      "Whole House Water Softener",
+      "Mosquito Nets on all windows",
+      "Mosquito Repellent on request",
+      "Air Cooler",
+      "Air Conditioning (Split AC) in select rooms",
+      "Washing Machine",
+      "Free Vehicle Parking",
+      "Electric Vehicle Rental"
+    ],
+    "transport": [
+      "EV Bikes on Rent: ₹250-400/day",
+      "Autos up and down: ₹500 (4 people)"
+    ],
+    "description": ""
+  },
+  {
+    "id": 3,
+    "name": "Mannil HomeStay",
+    "category": "Home Stays Near Isha Yoga Center",
+    "distance": "6 kms",
+    "contact": "9074992743",
+    "mapLink": "https://maps.app.goo.gl/n7sZefvmmpm5dZ6w5",
+    "amenities": [
+      "High-Speed WiFi",
+      "Fully Equipped Kitchen",
+      "Washing Machine",
+      "Separate Sadhana space"
+    ],
+    "transport": [
+      "Taxi/Autos up and down: ₹500 (4 people)"
+    ],
+    "description": ""
+  },
+  {
+    "id": 4,
+    "name": "Sadhguru Krupa Home Stay",
+    "category": "Home Stays Near Isha Yoga Center",
+    "distance": "1.5 kms",
+    "contact": "7710085111 / 9372938533",
+    "mapLink": "https://maps.app.goo.gl/YcoQHoxccquZiwWQ6",
+    "amenities": [
+      "Stunning views of Adiyogi, lake, Velliangiri Mountains",
+      "Walkable distance to Isha landmarks (7 mins to Malai Vasal Gate, 14 mins to Adiyogi, 35 mins to Dhyanlinga)",
+      "Deluxe A/C rooms with queen-size beds",
+      "Yoga & Meditation Mandapam with Adiyogi view",
+      "Free high-speed Wi-Fi",
+      "Google TV in all rooms",
+      "Complimentary green tea & coffee",
+      "Free vehicle parking",
+      "Common kitchen with induction stove",
+      "Satvik/ashram-style meal arrangements",
+      "Laundry options available",
+      "Flexible early/late check-in (extra fee)",
+      "Well-ventilated rooms with mosquito nets",
+      "Dedicated workspace in every room",
+      "Fresh linens, towels, sheets, pillows, blankets",
+      "Storage cabinet + drawers",
+      "Private western bathrooms",
+      "24/7 hot & cold water",
+      "Complimentary body wash, shampoo, hand wash",
+      "Individually controlled room fresheners",
+      "Continuous power backup (UPS + Genset)",
+      "Private Hatha Yoga sessions on request",
+      "Regular room cleaning & high hygiene",
+      "Drinking water dispenser",
+      "Peaceful garden area",
+      "24/7 taxi & auto service",
+      "Essentials within 2 km (groceries, restaurants, pharmacy)",
+      "CCTV surveillance",
+      "24/7 on-site manager with language support"
+    ],
+    "transport": [
+      "Auto-rickshaw: ₹150",
+      "Taxi: ₹200"
+    ],
+    "description": ""
+  },
+  {
+    "id": 5,
+    "name": "Shoonya Vaasam",
+    "category": "Home Stays Near Isha Yoga Center",
+    "distance": "1.5 kms",
+    "contact": "9500655596",
+    "mapLink": "https://maps.app.goo.gl/Q6Uk7dP2D5v5NnUz9",
+    "amenities": [
+      "WiFi",
+      "Washing machine",
+      "Air conditioning (1 room)",
+      "Geyser",
+      "24 hours power backup",
+      "Cycle to rent",
+      "Basic kitchen",
+      "Open car park"
+    ],
+    "transport": [
+      "Auto Rickshaw: ₹150",
+      "Taxi: ₹200"
+    ],
+    "description": ""
+  },
+  {
+    "id": 6,
+    "name": "Sadhguru Grace",
+    "category": "Home Stays Near Isha Yoga Center",
+    "distance": "2.5 kms",
+    "contact": "9042778423",
+    "mapLink": "https://maps.app.goo.gl/oMW4nhqHFJxJ9x959",
+    "amenities": [
+      "Free parking",
+      "High Speed WiFi",
+      "12000+ Sq Ft Land",
+      "Landscape Avenues to IYC",
+      "Cycles Available on Rent",
+      "Campfire Facility",
+      "Garden",
+      "24×7 Check-in",
+      "Uninterrupted Supply 24×7",
+      "Awesome Views",
+      "On Site Manager"
+    ],
+    "transport": [
+      "Auto rickshaw: ₹150 to Isha (one way)"
+    ],
+    "description": ""
+  },
+  {
+    "id": 7,
+    "name": "Agni River Side Cabin Stay",
+    "category": "Home Stays Near Isha Yoga Center",
+    "distance": "5 kms",
+    "contact": "7506374041",
+    "mapLink": "https://maps.app.goo.gl/2tFmcKMvPjYJQjND8",
+    "amenities": [
+      "—"
+    ],
+    "transport": [
+      "Autos & Buses available"
+    ],
+    "description": ""
+  },
+  {
+    "id": 8,
+    "name": "Bhairavi Home Stay",
+    "category": "Home Stays Near Isha Yoga Center",
+    "distance": "1.5 kms",
+    "contact": "8778544318",
+    "mapLink": "https://maps.app.goo.gl/RwoEwsNuE4k5gG67A",
+    "amenities": [
+      "—"
+    ],
+    "transport": [
+      "—"
+    ],
+    "description": ""
+  },
+  {
+    "id": 9,
+    "name": "GuruPadhuka Home Stay",
+    "category": "Home Stays Near Isha Yoga Center",
+    "distance": "6.6 kms",
+    "contact": "8132931070",
+    "mapLink": "https://maps.app.goo.gl/LPD38Btrs3zNKRrt8",
+    "amenities": [
+      "—"
+    ],
+    "transport": [
+      "—"
+    ],
+    "description": ""
+  },
+  {
+    "id": 10,
+    "name": "Jeevakanthan Home Stay",
+    "category": "Home Stays Near Isha Yoga Center",
+    "distance": "3 kms",
+    "contact": "8072543950",
+    "mapLink": "https://maps.app.goo.gl/w3TUKfzUY68cZVV9A",
+    "amenities": [
+      "Tea or coffee complimentary",
+      "Full cooking allowed with extra charges",
+      "Washing machine with extra charges",
+      "Two wheeler parking available",
+      "Attached bathroom with geyser",
+      "Cleansing products",
+      "Terrace and balcony",
+      "WiFi: ₹50/day",
+      "24/7 Transportation arrangement",
+      "Nearby shops, medical shops, restaurants"
+    ],
+    "transport": [
+      "Bus: ₹15 per head",
+      "Cab or auto: ₹200 per drop (up to 4 people)"
+    ],
+    "description": ""
+  },
+  {
+    "id": 11,
+    "name": "Aum Shanti Farm Stay",
+    "category": "Home Stays Near Isha Yoga Center",
+    "distance": "11 kms",
+    "contact": "9789154954",
+    "mapLink": "https://maps.app.goo.gl/nhppyLMKJaVaJEBWA",
+    "amenities": [
+      "—"
+    ],
+    "transport": [
+      "—"
+    ],
+    "description": ""
+  },
+  {
+    "id": 12,
+    "name": "Linga Stays Home Stay",
+    "category": "Home Stays Near Isha Yoga Center",
+    "distance": "11 kms",
+    "contact": "9894511911",
+    "mapLink": "https://maps.app.goo.gl/3J5wn8Zo1SqY4GAg8",
+    "amenities": [
+      "—"
+    ],
+    "transport": [
+      "—"
+    ],
+    "description": ""
+  },
+  {
+    "id": 13,
+    "name": "Mahesh Yatrigal (Yatri Nivas) - Hall Stay",
+    "category": "Dorms (Economical Stays - ₹100-₹400 per day)",
+    "distance": "2 kms",
+    "contact": "8111032845 / 9342752654 (If no response, directly go to location)",
+    "mapLink": "https://maps.app.goo.gl/E2kxaiweHdCkujv49",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 14,
+    "name": "Raja Residency Dorms",
+    "category": "Dorms (Economical Stays - ₹100-₹400 per day)",
+    "distance": "8.8 kms",
+    "contact": "9994442255",
+    "mapLink": "https://maps.app.goo.gl/oXMBArzUaEYWGJ2F7",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 15,
+    "name": "Linga Stays Dorms",
+    "category": "Dorms (Economical Stays - ₹100-₹400 per day)",
+    "distance": "11.2 kms",
+    "contact": "9894511911",
+    "mapLink": "https://maps.app.goo.gl/3J5wn8Zo1SqY4GAg8",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 16,
+    "name": "Red fort Dorms / Hall",
+    "category": "Dorms (Economical Stays - ₹100-₹400 per day)",
+    "distance": "11.4 kms",
+    "contact": "9894511911",
+    "mapLink": "https://maps.app.goo.gl/yVnj7R7ayV1jXU5R6",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 17,
+    "name": "Hotel Thirumoorthy",
+    "category": "Hotels / Residencies",
+    "distance": "1.5 kms",
+    "contact": "9994953453",
+    "mapLink": "https://maps.app.goo.gl/fCYV8YA3NGSXUPrg7",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 18,
+    "name": "SKV Rooms",
+    "category": "Hotels / Residencies",
+    "distance": "2 kms",
+    "contact": "7550350363",
+    "mapLink": "https://maps.app.goo.gl/JkXGhq2KXZyC6z51A",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 19,
+    "name": "Sri Meenakshi residency",
+    "category": "Hotels / Residencies",
+    "distance": "3 kms",
+    "contact": "9444068016 / 7601999346 / 7356824354",
+    "mapLink": "https://maps.app.goo.gl/7ehJFj2ZqMYbWN6y7",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 20,
+    "name": "Nandi Nest",
+    "category": "Hotels / Residencies",
+    "distance": "3 kms",
+    "contact": "8667561961",
+    "mapLink": "https://maps.app.goo.gl/QkiBoSZUMJ75v8iU7",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 21,
+    "name": "Tawa Club",
+    "category": "Hotels / Residencies",
+    "distance": "3 kms",
+    "contact": "9899475560",
+    "mapLink": "https://maps.app.goo.gl/vcPT5oM7wKNsf6fA8",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 22,
+    "name": "D Stays",
+    "category": "Hotels / Residencies",
+    "distance": "3 kms",
+    "contact": "8754950610 / 9384745492",
+    "mapLink": "https://maps.app.goo.gl/rUfT3XaPwpY1pKZ49",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 23,
+    "name": "OYO Nischala Stay Rooms",
+    "category": "Hotels / Residencies",
+    "distance": "6 kms",
+    "contact": "1244330599",
+    "mapLink": "https://maps.app.goo.gl/DQqse8TgaSgYTa5h7",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 24,
+    "name": "Aryas Residency",
+    "category": "Hotels / Residencies",
+    "distance": "7 kms",
+    "contact": "8438675292",
+    "mapLink": "https://maps.app.goo.gl/7xopw92HAH6izDt7A",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 25,
+    "name": "Ayyan Residency",
+    "category": "Hotels / Residencies",
+    "distance": "8 kms",
+    "contact": "9944079805",
+    "mapLink": "https://maps.app.goo.gl/KxWwi1UvCVB2GKkQA",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 26,
+    "name": "NKP Residency Rooms",
+    "category": "Hotels / Residencies",
+    "distance": "8 kms",
+    "contact": "8668771669",
+    "mapLink": "https://maps.app.goo.gl/KPpCQrDtsdKsWQpKA",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 27,
+    "name": "NKP Residency Dorm",
+    "category": "Hotels / Residencies",
+    "distance": "8 kms",
+    "contact": "8668771669",
+    "mapLink": "https://maps.app.goo.gl/KPpCQrDtsdKsWQpKA",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 28,
+    "name": "COVAI RESIDENCY",
+    "category": "Hotels / Residencies",
+    "distance": "8 kms",
+    "contact": "9994013363",
+    "mapLink": "https://maps.app.goo.gl/zcVdHzEhUadpwGzy8",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 29,
+    "name": "KPR Residency",
+    "category": "Hotels / Residencies",
+    "distance": "8.5 kms",
+    "contact": "9790223898",
+    "mapLink": "https://maps.app.goo.gl/vwVz58rRDP2bR7Ey5",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 30,
+    "name": "Raja Residency",
+    "category": "Hotels / Residencies",
+    "distance": "8.8 kms",
+    "contact": "9843774188",
+    "mapLink": "https://maps.app.goo.gl/oXMBArzUaEYWGJ2F7",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 31,
+    "name": "Royal Castle (Temp closed)",
+    "category": "Hotels / Residencies",
+    "distance": "9 kms",
+    "contact": "0",
+    "mapLink": "https://maps.app.goo.gl/ApYjjHyfF8P45gyv5",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 32,
+    "name": "Siruvani Residency",
+    "category": "Hotels / Residencies",
+    "distance": "9 kms",
+    "contact": "9944680039",
+    "mapLink": "https://maps.app.goo.gl/e6dGMPhSPgBzShze8",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 33,
+    "name": "Shree Bharat Residency",
+    "category": "Hotels / Residencies",
+    "distance": "9 kms",
+    "contact": "9488835455",
+    "mapLink": "https://maps.app.goo.gl/cj8D8yzRa9bVvzhZ6",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 34,
+    "name": "TEJA RESIDENCY",
+    "category": "Hotels / Residencies",
+    "distance": "9 kms",
+    "contact": "9566472919",
+    "mapLink": "https://maps.app.goo.gl/5choh8h5CdMEUWt6A",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 35,
+    "name": "Sri Aksha Residency",
+    "category": "Hotels / Residencies",
+    "distance": "9 kms",
+    "contact": "9566472919",
+    "mapLink": "https://maps.app.goo.gl/hrRXQ9hXc6M1Mpd18",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 36,
+    "name": "JP Residency",
+    "category": "Hotels / Residencies",
+    "distance": "9 kms",
+    "contact": "9003749226",
+    "mapLink": "https://maps.app.goo.gl/s2i2XntFTfEbeEsc7",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 37,
+    "name": "Vasantham Residency",
+    "category": "Hotels / Residencies",
+    "distance": "9 kms",
+    "contact": "9488559292",
+    "mapLink": "https://maps.app.goo.gl/MbkZNxiLNuqdzFjp6",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 38,
+    "name": "VASANTHAM RESIDENCY",
+    "category": "Hotels / Residencies",
+    "distance": "9 kms",
+    "contact": "9488559292",
+    "mapLink": "https://maps.app.goo.gl/5iaBbm5h5o9eiroa8",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 39,
+    "name": "Sri Aksha Residency",
+    "category": "Hotels / Residencies",
+    "distance": "9 kms",
+    "contact": "9566472919",
+    "mapLink": "https://maps.app.goo.gl/8DcUN45gNv3euYUH6",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 40,
+    "name": "Sri Vinayaga Residency -2",
+    "category": "Hotels / Residencies",
+    "distance": "10 kms",
+    "contact": "9894917337",
+    "mapLink": "https://maps.app.goo.gl/gEt9kS8jjKuSSzNF7",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 41,
+    "name": "Balaji Residency",
+    "category": "Hotels / Residencies",
+    "distance": "10 kms",
+    "contact": "9944122335 / 9894161873",
+    "mapLink": "https://maps.app.goo.gl/W5piSRyiC8WisefC9",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 42,
+    "name": "Millennium Eco Retreat",
+    "category": "Hotels / Residencies",
+    "distance": "10 kms",
+    "contact": "8148655335",
+    "mapLink": "https://maps.app.goo.gl/SBR5ot8TiDbmyXMU6",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 43,
+    "name": "Millennium Eco Retreat - New First Floor",
+    "category": "Hotels / Residencies",
+    "distance": "10 kms",
+    "contact": "8148655335",
+    "mapLink": "https://maps.app.goo.gl/SBR5ot8TiDbmyXMU6",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 44,
+    "name": "Sri Sai Residency",
+    "category": "Hotels / Residencies",
+    "distance": "10 kms",
+    "contact": "9751046446 / 8015246446",
+    "mapLink": "https://maps.app.goo.gl/nwnWGoxb2cmKnntW9",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 45,
+    "name": "Hummingbird Nest",
+    "category": "Hotels / Residencies",
+    "distance": "11 kms",
+    "contact": "8807464050",
+    "mapLink": "https://maps.app.goo.gl/dCLZ6Z7g3VxTn5Mw9",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 46,
+    "name": "Linga Stays Residency",
+    "category": "Hotels / Residencies",
+    "distance": "11.2 kms",
+    "contact": "9894511911",
+    "mapLink": "https://maps.app.goo.gl/3J5wn8Zo1SqY4GAg8",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 47,
+    "name": "Jai Shri Ram Residency",
+    "category": "Hotels / Residencies",
+    "distance": "11.4 kms",
+    "contact": "9894511911",
+    "mapLink": "https://maps.app.goo.gl/yVnj7R7ayV1jXU5R6",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 48,
+    "name": "Red fort Residency",
+    "category": "Hotels / Residencies",
+    "distance": "11.4 kms",
+    "contact": "9894511911",
+    "mapLink": "https://maps.app.goo.gl/yVnj7R7ayV1jXU5R6",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 49,
+    "name": "Sri Vinayaga Residency - 1",
+    "category": "Hotels / Residencies",
+    "distance": "12 kms",
+    "contact": "8148737337",
+    "mapLink": "https://maps.app.goo.gl/DtLGSJrtE4jemvG49",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 50,
+    "name": "KPD Residency",
+    "category": "Hotels / Residencies",
+    "distance": "12 kms",
+    "contact": "9600498584 / 9677708505",
+    "mapLink": "https://maps.app.goo.gl/yZG6ya3UDcbnmWJo7",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 51,
+    "name": "7 Hills Residency",
+    "category": "Hotels / Residencies",
+    "distance": "12 kms",
+    "contact": "7418202777",
+    "mapLink": "https://maps.app.goo.gl/Wxf4rN3YQ5hsKYLQ7",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 52,
+    "name": "Thalampoo Residency",
+    "category": "Hotels / Residencies",
+    "distance": "13 kms",
+    "contact": "9790008660",
+    "mapLink": "https://maps.app.goo.gl/G86KrfxTGfYQzV2E6",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 53,
+    "name": "Western Castle Stays and Lawn",
+    "category": "Hotels / Residencies",
+    "distance": "13 kms",
+    "contact": "9843436907",
+    "mapLink": "https://maps.app.goo.gl/NjMpS2SnKNmaiUAw7",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 54,
+    "name": "Vibin Residency",
+    "category": "Hotels / Residencies",
+    "distance": "14 kms",
+    "contact": "9486684220",
+    "mapLink": "https://maps.app.goo.gl/Zk14wAwVTykpiBiP7",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 55,
+    "name": "Vibin Residency - New Construction",
+    "category": "Hotels / Residencies",
+    "distance": "14 kms",
+    "contact": "9486684220",
+    "mapLink": "https://maps.app.goo.gl/Zk14wAwVTykpiBiP7",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 56,
+    "name": "SKV Residency",
+    "category": "Hotels / Residencies",
+    "distance": "15 kms",
+    "contact": "9787737375",
+    "mapLink": "https://maps.app.goo.gl/b6f96VFqivG8Wndm7",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 57,
+    "name": "Ibex Resorts, Coimbatore (Kakarla)",
+    "category": "Farm Stays & Villas",
+    "distance": "5 kms",
+    "contact": "7358157300",
+    "mapLink": "https://maps.app.goo.gl/HryohqfBAgosLqqo8",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 58,
+    "name": "Savar",
+    "category": "Farm Stays & Villas",
+    "distance": "6 kms",
+    "contact": "9500506486",
+    "mapLink": "https://maps.app.goo.gl/mgQZzqkC7kzptmu29",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 59,
+    "name": "Thalampoo Farm Stay",
+    "category": "Farm Stays & Villas",
+    "distance": "7 kms",
+    "contact": "9790008660",
+    "mapLink": "https://maps.app.goo.gl/k9eExeoNckxSatPB6",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 60,
+    "name": "The FarmStay Company - BambooNest Farm Stay - Villa",
+    "category": "Farm Stays & Villas",
+    "distance": "8 kms",
+    "contact": "8300069990",
+    "mapLink": "https://maps.app.goo.gl/jqHqmjPLmXuxCT4V6",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 61,
+    "name": "The FarmStay Company - FoxChase Farm Stay - Villa",
+    "category": "Farm Stays & Villas",
+    "distance": "8 kms",
+    "contact": "8300069990",
+    "mapLink": "https://maps.app.goo.gl/sND1V5eiCixux8rf7",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 62,
+    "name": "The FarmStay Company - TGIF Farm Stay - Villa",
+    "category": "Farm Stays & Villas",
+    "distance": "8 kms",
+    "contact": "8300069990",
+    "mapLink": "https://maps.app.goo.gl/sND1V5eiCixux8rf7",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 63,
+    "name": "Evergreen Farmstay",
+    "category": "Farm Stays & Villas",
+    "distance": "11 kms",
+    "contact": "9790008660",
+    "mapLink": "https://maps.app.goo.gl/NVqcGriCvPS9K5kZA",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 64,
+    "name": "Sahyadri - 1 BedRoom Villa",
+    "category": "Farm Stays & Villas",
+    "distance": "12 kms",
+    "contact": "7339011353",
+    "mapLink": "https://maps.app.goo.gl/2pyq82fJzkvhMy7A8",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 65,
+    "name": "Varanam - 2 BedRoom Villa",
+    "category": "Farm Stays & Villas",
+    "distance": "12 kms",
+    "contact": "7339011353",
+    "mapLink": "https://maps.app.goo.gl/2pyq82fJzkvhMy7A8",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 66,
+    "name": "Deco Farm Stay",
+    "category": "Farm Stays & Villas",
+    "distance": "15 kms",
+    "contact": "9940711100",
+    "mapLink": "https://maps.app.goo.gl/ctebRhn5uq6j2God6",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 67,
+    "name": "Classique Inn Resorts",
+    "category": "Resorts",
+    "distance": "5 kms",
+    "contact": "9842245686",
+    "mapLink": "https://maps.app.goo.gl/xcT1J5fe5uhzQNgB7",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 68,
+    "name": "Dvara Siruvani",
+    "category": "Resorts",
+    "distance": "10 kms",
+    "contact": "7339111222",
+    "mapLink": "https://maps.app.goo.gl/d5w7XX1EbwZmamvb7",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 69,
+    "name": "MangoHill Destination Resort",
+    "category": "Resorts",
+    "distance": "12 kms",
+    "contact": "8585854615",
+    "mapLink": "https://maps.app.goo.gl/8GT88Kims51rQ66N8",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 70,
+    "name": "Classique Inn Resorts Hall",
+    "category": "Halls",
+    "distance": "5 kms",
+    "contact": "9842245686",
+    "mapLink": "https://maps.app.goo.gl/xcT1J5fe5uhzQNgB7",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  },
+  {
+    "id": 71,
+    "name": "Usha Spiritual Mahal Dorm & Halls",
+    "category": "Halls",
+    "distance": "9 kms",
+    "contact": "9677559539",
+    "mapLink": "https://maps.app.goo.gl/RJpLnmYPxFDnpr1T8",
+    "amenities": [],
+    "transport": [],
+    "description": ""
+  }
+]
