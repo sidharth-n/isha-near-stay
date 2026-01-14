@@ -11,6 +11,7 @@
     "data:convert": "node scripts/convert_data.js"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.6.1",
     "lucide-react": "^0.469.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

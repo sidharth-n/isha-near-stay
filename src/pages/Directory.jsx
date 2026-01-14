@@ -76,16 +76,24 @@ export default function Directory() {
             A curated directory of accommodations near Isha Yoga Center, Coimbatore.
           </p>
           
-          {/* Search Bar */}
+          {/* Search Bar - Enhanced for mobile */}
           <div className="relative max-w-md mx-auto">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-earth-400" size={20} />
             <input
               type="text"
-              placeholder="Search by name or distance..."
+              placeholder="Search stays, distance (e.g. 2 kms)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full py-3.5 pl-12 pr-6 rounded-full text-earth-900 placeholder:text-earth-400 focus:outline-none focus:ring-2 focus:ring-sage-400 shadow-lg"
+              className="w-full py-4 pl-12 pr-10 rounded-full text-earth-900 placeholder:text-earth-400 focus:outline-none focus:ring-2 focus:ring-sage-400 shadow-lg text-base"
             />
+            {searchQuery && (
+              <button 
+                onClick={() => setSearchQuery('')}
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-earth-400 hover:text-earth-600"
+              >
+                ✕
+              </button>
+            )}
           </div>
         </div>
       </div>
