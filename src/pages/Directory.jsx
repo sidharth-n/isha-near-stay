@@ -5,16 +5,16 @@ import StayModal from '../components/StayModal';
 import staysData from '../data/stays.json';
 import { Search, Home, Building2, Trees, Hotel, Users, Warehouse } from 'lucide-react';
 
-// Filter category definitions with short names and icons
+// Filter category definitions with short names, icons, and images
 const filterCategories = [
-  { key: 'All', label: 'All', icon: null },
-  { key: 'Inside Isha', label: 'Inside Isha', icon: Home, matcher: (cat) => cat.includes('Inside Isha') },
-  { key: 'Homestay', label: 'Homestay', icon: Home, matcher: (cat) => cat.includes('Home Stay') },
-  { key: 'Dorms', label: 'Dorms', icon: Users, matcher: (cat) => cat.includes('Dorm') },
-  { key: 'Hotels', label: 'Hotels', icon: Building2, matcher: (cat) => cat.includes('Hotel') || cat.includes('Residenc') },
-  { key: 'Farm & Villa', label: 'Farm Stays', icon: Trees, matcher: (cat) => cat.includes('Farm') || cat.includes('Villa') },
-  { key: 'Resorts', label: 'Resorts', icon: Hotel, matcher: (cat) => cat.includes('Resort') && !cat.includes('Farm') },
-  { key: 'Halls', label: 'Halls', icon: Warehouse, matcher: (cat) => cat.includes('Hall') && !cat.includes('Dorm') },
+  { key: 'All', label: 'All', icon: null, image: null },
+  { key: 'Inside Isha', label: 'Inside Isha', icon: Home, image: '/images/category-inside-isha.png', matcher: (cat) => cat.includes('Inside Isha') },
+  { key: 'Homestay', label: 'Homestay', icon: Home, image: '/images/category-homestay.png', matcher: (cat) => cat.includes('Home Stay') },
+  { key: 'Dorms', label: 'Dorms', icon: Users, image: '/images/category-dorm.png', matcher: (cat) => cat.includes('Dorm') },
+  { key: 'Hotels', label: 'Hotels', icon: Building2, image: '/images/category-hotel.png', matcher: (cat) => cat.includes('Hotel') || cat.includes('Residenc') },
+  { key: 'Farm & Villa', label: 'Farm Stays', icon: Trees, image: '/images/category-farmstay.png', matcher: (cat) => cat.includes('Farm') || cat.includes('Villa') },
+  { key: 'Resorts', label: 'Resorts', icon: Hotel, image: '/images/category-resort.png', matcher: (cat) => cat.includes('Resort') && !cat.includes('Farm') },
+  { key: 'Halls', label: 'Halls', icon: Warehouse, image: '/images/category-hall.png', matcher: (cat) => cat.includes('Hall') && !cat.includes('Dorm') },
 ];
 
 export default function Directory() {
@@ -58,9 +58,15 @@ export default function Directory() {
     <div className="min-h-screen bg-earth-50 pb-20">
       <Navbar />
       
-      {/* Hero / Header */}
-      <div className="bg-gradient-to-br from-earth-800 via-earth-900 to-earth-800 text-white py-12 px-4 text-center relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+      {/* Hero / Header with background image */}
+      <div className="relative text-white py-16 px-4 text-center overflow-hidden">
+        {/* Background image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/images/hero-background.png')" }}
+        />
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-earth-900/80 via-earth-900/70 to-earth-900/90" />
         <div className="relative max-w-3xl mx-auto">
           <h1 className="text-3xl md:text-4xl font-serif font-bold mb-4">
             Find Your Stay Near Isha
@@ -84,10 +90,9 @@ export default function Directory() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Category Filter Cards */}
+        {/* Category Filter Cards with Images */}
         <div className="flex gap-3 overflow-x-auto pb-6 mb-4 scrollbar-hide -mx-4 px-4">
           {filterCategories.map(cat => {
-            const IconComponent = cat.icon;
             const count = categoryCounts[cat.key] || 0;
             const isActive = filterKey === cat.key;
             
@@ -95,19 +100,31 @@ export default function Directory() {
               <button
                 key={cat.key}
                 onClick={() => setFilterKey(cat.key)}
-                className={`flex flex-col items-center gap-2 min-w-[80px] px-4 py-3 rounded-2xl text-center transition-all shrink-0 ${
+                className={`relative min-w-[100px] h-28 rounded-2xl overflow-hidden shrink-0 transition-all ${
                   isActive 
-                    ? 'bg-earth-800 text-white shadow-lg scale-105' 
-                    : 'bg-white text-earth-600 hover:bg-earth-100 border border-earth-200 hover:border-earth-300'
+                    ? 'ring-2 ring-sage-500 ring-offset-2 scale-105 shadow-lg' 
+                    : 'hover:scale-102 shadow-sm'
                 }`}
               >
-                {IconComponent && (
-                  <IconComponent size={22} className={isActive ? 'text-sage-300' : 'text-earth-400'} />
+                {/* Background image or gradient */}
+                {cat.image ? (
+                  <img 
+                    src={cat.image} 
+                    alt={cat.label}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="absolute inset-0 bg-gradient-to-br from-sage-500 to-sage-700" />
                 )}
-                <span className="text-sm font-semibold whitespace-nowrap">{cat.label}</span>
-                <span className={`text-xs ${isActive ? 'text-earth-300' : 'text-earth-400'}`}>
-                  {count} stays
-                </span>
+                
+                {/* Overlay */}
+                <div className={`absolute inset-0 ${isActive ? 'bg-black/40' : 'bg-black/50'} transition-colors`} />
+                
+                {/* Content */}
+                <div className="relative h-full flex flex-col items-center justify-center text-white p-2">
+                  <span className="text-sm font-bold whitespace-nowrap drop-shadow-md">{cat.label}</span>
+                  <span className="text-xs opacity-80 mt-1">{count} stays</span>
+                </div>
               </button>
             );
           })}

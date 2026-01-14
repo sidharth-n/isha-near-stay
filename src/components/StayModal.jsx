@@ -58,10 +58,7 @@ export default function StayModal({ stay, onClose }) {
   
   // Get fallback image
   const getFallbackImage = () => {
-    if (stay.category.includes('Cottage')) return 'https://images.unsplash.com/photo-1587061949409-02df41d5e562?auto=format&fit=crop&q=80&w=1200';
-    if (stay.category.includes('Resort')) return 'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80&w=1200';
-    if (stay.category.includes('Farm')) return 'https://images.unsplash.com/photo-1500076656116-558758c991c1?auto=format&fit=crop&q=80&w=1200';
-    return 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=1200';
+    return '/images/placeholder-stay.png';
   };
   
   const currentImage = hasPhotos ? visiblePhotos[currentPhotoIndex]?.url : getFallbackImage();
