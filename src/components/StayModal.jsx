@@ -1,22 +1,47 @@
-import React, { useState } from 'react';
-import { X, MapPin, Phone, Wifi, Car, Coffee, Wind, Star, Globe, ChevronLeft, ChevronRight, ExternalLink, Image } from 'lucide-react';
-import PhotoGallery from './PhotoGallery';
+import React, { useState, useEffect } from 'react';
+import { X, MapPin, Phone, Wifi, Car, Coffee, Wind, Star, Globe, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
 import ReviewCard from './ReviewCard';
 
+// Short category name mapping
+const getShortCategory = (category) => {
+  if (category.includes('Inside Isha')) return 'Inside Isha';
+  if (category.includes('Home Stay')) return 'Homestay';
+  if (category.includes('Dorm')) return 'Dorm';
+  if (category.includes('Hotel') || category.includes('Residenc')) return 'Hotel';
+  if (category.includes('Farm') || category.includes('Villa')) return 'Farm & Villa';
+  if (category.includes('Resort')) return 'Resort';
+  if (category.includes('Hall')) return 'Hall';
+  return category.split('(')[0].trim().split(' ').slice(0, 2).join(' ');
+};
+
+// Deduplicate photos by comparing URL base (without size params)
+const deduplicatePhotos = (media) => {
+  if (!media) return [];
+  
+  const seen = new Set();
+  return media.filter(m => {
+    if (m.type !== 'photo' || m.visible === false) return false;
+    // Get base URL without size parameters
+    const baseUrl = m.url.split('=')[0];
+    if (seen.has(baseUrl)) return false;
+    seen.add(baseUrl);
+    return true;
+  }).sort((a, b) => (a.order || 0) - (b.order || 0));
+};
+
 export default function StayModal({ stay, onClose }) {
-  const [showGallery, setShowGallery] = useState(false);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
   
   if (!stay) return null;
   
-  // Get visible media sorted by order
-  const visibleMedia = (stay.media || [])
-    .filter(m => m.visible !== false)
-    .sort((a, b) => (a.order || 0) - (b.order || 0));
+  // Get unique visible photos (deduplicated)
+  const visiblePhotos = deduplicatePhotos(stay.media);
+  const hasPhotos = visiblePhotos.length > 0;
+  const hasMultiplePhotos = visiblePhotos.length > 1;
   
-  const visiblePhotos = visibleMedia.filter(m => m.type === 'photo');
-  
-  // Get unique reviews (remove duplicates)
+  // Get unique reviews
   const uniqueReviews = (stay.reviews || []).filter((review, index, self) =>
     index === self.findIndex(r => r.text === review.text)
   );
@@ -39,272 +64,293 @@ export default function StayModal({ stay, onClose }) {
     return 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=1200';
   };
   
-  const headerImage = visiblePhotos.length > 0 ? visiblePhotos[0].url : getFallbackImage();
+  const currentImage = hasPhotos ? visiblePhotos[currentPhotoIndex]?.url : getFallbackImage();
   
-  const nextPhoto = () => {
-    if (visiblePhotos.length > 1) {
-      setCurrentPhotoIndex((prev) => (prev + 1) % visiblePhotos.length);
-    }
+  // Navigation
+  const nextPhoto = () => setCurrentPhotoIndex((prev) => (prev + 1) % visiblePhotos.length);
+  const prevPhoto = () => setCurrentPhotoIndex((prev) => (prev - 1 + visiblePhotos.length) % visiblePhotos.length);
+  
+  // Touch swipe handling
+  const minSwipeDistance = 50;
+  
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
   };
   
-  const prevPhoto = () => {
-    if (visiblePhotos.length > 1) {
-      setCurrentPhotoIndex((prev) => (prev - 1 + visiblePhotos.length) % visiblePhotos.length);
-    }
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
   };
+  
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    if (distance > minSwipeDistance && hasMultiplePhotos) nextPhoto();
+    if (distance < -minSwipeDistance && hasMultiplePhotos) prevPhoto();
+  };
+  
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = 'unset'; };
+  }, []);
 
   return (
-    <>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
-        <div 
-          className="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity"
-          onClick={onClose}
-        />
+    <div className="fixed inset-0 z-50 bg-white md:bg-black/50 md:backdrop-blur-sm md:flex md:items-center md:justify-center md:p-4">
+      {/* Desktop backdrop click */}
+      <div className="hidden md:block absolute inset-0" onClick={onClose} />
+      
+      {/* Modal Container - Full screen on mobile, centered on desktop */}
+      <div className="relative w-full h-full md:max-w-2xl md:max-h-[90vh] md:h-auto bg-white md:rounded-3xl overflow-hidden flex flex-col">
         
-        <div className="relative w-full max-w-3xl bg-white rounded-3xl shadow-2xl overflow-hidden max-h-[92vh] flex flex-col animate-in fade-in zoom-in-95 duration-200">
-          {/* Hero Image Section */}
-          <div className="relative h-64 sm:h-80 bg-earth-100 shrink-0 group">
-            <img 
-              src={visiblePhotos.length > 0 ? visiblePhotos[currentPhotoIndex].url : headerImage}
-              alt={stay.name}
-              className="w-full h-full object-cover"
-              referrerPolicy="no-referrer"
-            />
-            
-            {/* Navigation arrows for photos */}
-            {visiblePhotos.length > 1 && (
-              <>
-                <button 
-                  onClick={prevPhoto}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 p-2 bg-white/90 rounded-full text-earth-800 hover:bg-white transition-colors shadow-lg opacity-0 group-hover:opacity-100"
-                >
-                  <ChevronLeft size={20} />
-                </button>
-                <button 
-                  onClick={nextPhoto}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 p-2 bg-white/90 rounded-full text-earth-800 hover:bg-white transition-colors shadow-lg opacity-0 group-hover:opacity-100"
-                >
-                  <ChevronRight size={20} />
-                </button>
-              </>
-            )}
-            
-            {/* Close button */}
-            <button 
-              onClick={onClose}
-              className="absolute top-4 right-4 p-2.5 bg-white/90 rounded-full text-earth-800 hover:bg-white transition-colors shadow-lg"
-            >
-              <X size={20} />
-            </button>
-            
-            {/* Photo count & gallery button */}
-            {visiblePhotos.length > 0 && (
+        {/* Hero Image Section with Carousel */}
+        <div 
+          className="relative h-64 sm:h-72 md:h-80 bg-earth-100 shrink-0"
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
+          <img 
+            src={currentImage}
+            alt={stay.name}
+            className="w-full h-full object-cover"
+            referrerPolicy="no-referrer"
+          />
+          
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
+          
+          {/* Close button */}
+          <button 
+            onClick={onClose}
+            className="absolute top-4 right-4 p-2.5 bg-white/90 rounded-full text-earth-800 hover:bg-white transition-colors shadow-lg z-10"
+          >
+            <X size={20} />
+          </button>
+          
+          {/* Desktop navigation arrows */}
+          {hasMultiplePhotos && (
+            <>
               <button 
-                onClick={() => setShowGallery(true)}
-                className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm px-3 py-2 rounded-xl flex items-center gap-2 shadow-lg hover:bg-white transition-colors"
+                onClick={prevPhoto}
+                className="hidden md:flex absolute left-3 top-1/2 -translate-y-1/2 p-2 bg-white/90 rounded-full text-earth-800 hover:bg-white transition-colors shadow-lg"
               >
-                <Image size={16} className="text-earth-700" />
-                <span className="text-sm font-semibold text-earth-800">
-                  {currentPhotoIndex + 1} / {visiblePhotos.length}
-                </span>
+                <ChevronLeft size={20} />
               </button>
+              <button 
+                onClick={nextPhoto}
+                className="hidden md:flex absolute right-3 top-1/2 -translate-y-1/2 p-2 bg-white/90 rounded-full text-earth-800 hover:bg-white transition-colors shadow-lg"
+              >
+                <ChevronRight size={20} />
+              </button>
+            </>
+          )}
+          
+          {/* Photo indicators */}
+          {hasMultiplePhotos && (
+            <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-1.5">
+              {visiblePhotos.slice(0, 8).map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentPhotoIndex(idx)}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    idx === currentPhotoIndex 
+                      ? 'bg-white w-4' 
+                      : 'bg-white/50'
+                  }`}
+                />
+              ))}
+              {visiblePhotos.length > 8 && (
+                <span className="text-white/70 text-xs ml-1">+{visiblePhotos.length - 8}</span>
+              )}
+            </div>
+          )}
+          
+          {/* Title overlay */}
+          <div className="absolute bottom-0 left-0 right-0 p-5">
+            <div className="flex items-center gap-2 mb-2 flex-wrap">
+              <span className="text-white/90 text-xs font-semibold bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm">
+                {getShortCategory(stay.category)}
+              </span>
+              {stay.rating && (
+                <span className="flex items-center gap-1 text-white bg-amber-500 px-2.5 py-1 rounded-full text-xs font-bold">
+                  <Star size={12} className="fill-white" />
+                  {stay.rating}
+                  {stay.reviewCount && <span className="font-normal opacity-80">({stay.reviewCount})</span>}
+                </span>
+              )}
+              <span className="text-white/80 text-xs bg-white/20 px-2.5 py-1 rounded-full backdrop-blur-sm">
+                {stay.distance}
+              </span>
+            </div>
+            <h2 className="text-xl sm:text-2xl font-serif font-bold text-white leading-tight">
+              {stay.name}
+            </h2>
+          </div>
+        </div>
+
+        {/* Content - Scrollable */}
+        <div className="flex-1 overflow-y-auto overscroll-contain">
+          <div className="p-5 space-y-6">
+            
+            {/* Quick Actions - Sticky feel */}
+            <div className="flex gap-3">
+              <a 
+                href={`tel:${stay.contact.split('/')[0].trim()}`}
+                className="flex-1 bg-gradient-to-r from-earth-800 to-earth-900 text-white py-3.5 rounded-2xl font-semibold flex items-center justify-center gap-2 shadow-md active:scale-95 transition-transform"
+              >
+                <Phone size={18} />
+                Call Now
+              </a>
+              {stay.mapLink && (
+                <a 
+                  href={stay.mapLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 bg-sage-100 text-sage-800 py-3.5 rounded-2xl font-semibold flex items-center justify-center gap-2 active:scale-95 transition-transform"
+                >
+                  <MapPin size={18} />
+                  Directions
+                </a>
+              )}
+            </div>
+            
+            {/* Website button */}
+            {stay.website && (
+              <a 
+                href={stay.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full bg-earth-100 text-earth-700 py-3 rounded-2xl font-medium flex items-center justify-center gap-2 active:scale-95 transition-transform"
+              >
+                <Globe size={16} />
+                Visit Website
+                <ExternalLink size={14} className="opacity-50" />
+              </a>
+            )}
+
+            {/* Details Card */}
+            <div className="bg-earth-50 rounded-2xl p-4 space-y-3">
+              <h3 className="font-serif font-bold text-earth-900">Details</h3>
+              
+              <div className="grid gap-3 text-sm">
+                <div className="flex items-start gap-3">
+                  <MapPin className="shrink-0 mt-0.5 text-sage-500" size={16} />
+                  <div>
+                    <span className="font-medium text-earth-600">Distance</span>
+                    <p className="text-earth-900">{stay.distance} from Isha</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-3">
+                  <Phone className="shrink-0 mt-0.5 text-sage-500" size={16} />
+                  <div>
+                    <span className="font-medium text-earth-600">Contact</span>
+                    <p className="text-earth-900">{stay.contact.replace(/<br\/>/g, ', ')}</p>
+                  </div>
+                </div>
+                
+                {stay.address && (
+                  <div className="flex items-start gap-3">
+                    <MapPin className="shrink-0 mt-0.5 text-sage-500" size={16} />
+                    <div>
+                      <span className="font-medium text-earth-600">Address</span>
+                      <p className="text-earth-900 text-sm">{stay.address}</p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Amenities */}
+            {stay.amenities?.length > 0 && stay.amenities[0] !== '—' && (
+              <div className="space-y-3">
+                <h3 className="font-serif font-bold text-earth-900">Amenities</h3>
+                <div className="grid grid-cols-2 gap-2">
+                  {stay.amenities.slice(0, 8).map((amenity, idx) => (
+                    <div key={idx} className="flex items-start gap-2 text-sm text-earth-700 bg-earth-50 p-3 rounded-xl">
+                      <span className="shrink-0 mt-0.5 text-sage-500">
+                        {getAmenityIcon(amenity)}
+                      </span>
+                      <span className="line-clamp-2">{amenity}</span>
+                    </div>
+                  ))}
+                </div>
+                {stay.amenities.length > 8 && (
+                  <p className="text-sage-600 text-sm font-medium text-center">
+                    +{stay.amenities.length - 8} more amenities
+                  </p>
+                )}
+              </div>
+            )}
+
+            {/* Transportation */}
+            {stay.transport?.length > 0 && stay.transport[0] !== '—' && (
+              <div className="space-y-3">
+                <h3 className="font-serif font-bold text-earth-900">Getting There</h3>
+                <div className="space-y-2">
+                  {stay.transport.map((item, idx) => (
+                    <div key={idx} className="bg-gradient-to-r from-earth-50 to-sage-50 p-3.5 rounded-xl text-sm text-earth-700 flex items-center gap-2">
+                      <Car className="text-sage-500 shrink-0" size={16} />
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
             )}
             
-            {/* Title overlay */}
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6 pt-16">
-              <div className="flex items-center gap-3 mb-2 flex-wrap">
-                <span className="text-white/80 text-sm font-medium bg-white/10 px-3 py-1 rounded-full backdrop-blur-sm">
-                  {stay.category.split('(')[0].trim()}
-                </span>
-                {stay.rating && (
-                  <span className="flex items-center gap-1 text-white bg-amber-500/90 px-2.5 py-1 rounded-full text-sm font-bold">
-                    <Star size={14} className="fill-white" />
-                    {stay.rating}
-                    {stay.reviewCount && (
-                      <span className="font-normal opacity-80">({stay.reviewCount})</span>
-                    )}
-                  </span>
-                )}
+            {/* Reviews Section */}
+            {uniqueReviews.length > 0 && (
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <h3 className="font-serif font-bold text-earth-900">Reviews</h3>
+                  {stay.reviewCount && (
+                    <span className="text-xs text-earth-500 bg-earth-100 px-2.5 py-1 rounded-full">
+                      {stay.reviewCount} on Google
+                    </span>
+                  )}
+                </div>
+                <div className="space-y-3">
+                  {uniqueReviews.slice(0, 3).map((review, idx) => (
+                    <ReviewCard key={idx} review={review} />
+                  ))}
+                </div>
               </div>
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-white leading-tight">
-                {stay.name}
-              </h2>
-            </div>
-          </div>
-
-          {/* Content */}
-          <div className="flex-1 overflow-y-auto">
-            <div className="p-6 space-y-6">
-              {/* Quick Actions */}
-              <div className="flex flex-wrap gap-3">
-                <a 
-                  href={`tel:${stay.contact.split('/')[0].trim()}`}
-                  className="flex-1 min-w-[130px] bg-gradient-to-r from-earth-800 to-earth-900 text-white py-3.5 px-6 rounded-xl font-semibold hover:from-earth-900 hover:to-black transition-all flex items-center justify-center gap-2 shadow-md"
-                >
-                  <Phone size={18} />
-                  Call Now
-                </a>
-                {stay.mapLink && (
-                  <a 
-                    href={stay.mapLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 min-w-[130px] bg-sage-100 text-sage-800 py-3.5 px-6 rounded-xl font-semibold hover:bg-sage-200 transition-colors flex items-center justify-center gap-2"
-                  >
-                    <MapPin size={18} />
-                    Directions
-                  </a>
-                )}
-                {stay.website && (
-                  <a 
-                    href={stay.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 min-w-[130px] bg-earth-100 text-earth-800 py-3.5 px-6 rounded-xl font-semibold hover:bg-earth-200 transition-colors flex items-center justify-center gap-2"
-                  >
-                    <Globe size={18} />
-                    Website
-                  </a>
-                )}
+            )}
+            
+            {/* Photo Gallery Thumbnails */}
+            {visiblePhotos.length > 1 && (
+              <div className="space-y-3">
+                <h3 className="font-serif font-bold text-earth-900">Photos</h3>
+                <div className="flex gap-2 overflow-x-auto pb-2 -mx-5 px-5 scrollbar-hide">
+                  {visiblePhotos.map((photo, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentPhotoIndex(idx)}
+                      className={`relative w-20 h-20 rounded-xl overflow-hidden shrink-0 transition-all ${
+                        idx === currentPhotoIndex 
+                          ? 'ring-2 ring-sage-500 ring-offset-2 scale-105' 
+                          : 'opacity-70 hover:opacity-100'
+                      }`}
+                    >
+                      <img
+                        src={photo.url}
+                        alt={`${stay.name} photo ${idx + 1}`}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                        referrerPolicy="no-referrer"
+                      />
+                    </button>
+                  ))}
+                </div>
               </div>
-
-              {/* Info Grid */}
-              <div className="grid sm:grid-cols-2 gap-6">
-                {/* Details */}
-                <div className="space-y-4">
-                  <h3 className="text-lg font-serif font-bold text-earth-900 border-b border-earth-100 pb-2">
-                    Details
-                  </h3>
-                  <div className="space-y-3 text-earth-700">
-                    <div className="flex items-start gap-3">
-                      <MapPin className="shrink-0 mt-0.5 text-sage-500" size={18} />
-                      <div>
-                        <span className="font-semibold text-earth-900">Distance:</span> {stay.distance}
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <Phone className="shrink-0 mt-0.5 text-sage-500" size={18} />
-                      <div>
-                        <span className="font-semibold text-earth-900">Contact:</span> {stay.contact.replace(/<br\/>/g, ', ')}
-                      </div>
-                    </div>
-                    {stay.address && (
-                      <div className="flex items-start gap-3">
-                        <MapPin className="shrink-0 mt-0.5 text-sage-500" size={18} />
-                        <div className="text-sm">
-                          <span className="font-semibold text-earth-900">Address:</span><br/>
-                          {stay.address}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                {/* Amenities */}
-                {stay.amenities?.length > 0 && stay.amenities[0] !== '—' && (
-                  <div className="space-y-4">
-                    <h3 className="text-lg font-serif font-bold text-earth-900 border-b border-earth-100 pb-2">
-                      Amenities
-                    </h3>
-                    <ul className="space-y-2">
-                      {stay.amenities.slice(0, 8).map((amenity, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-earth-700 text-sm">
-                          <span className="shrink-0 mt-0.5 text-sage-500">
-                            {getAmenityIcon(amenity)}
-                          </span>
-                          {amenity}
-                        </li>
-                      ))}
-                      {stay.amenities.length > 8 && (
-                        <li className="text-sage-600 text-sm font-medium">
-                          +{stay.amenities.length - 8} more amenities
-                        </li>
-                      )}
-                    </ul>
-                  </div>
-                )}
-              </div>
-
-              {/* Transportation */}
-              {stay.transport?.length > 0 && stay.transport[0] !== '—' && (
-                <div className="space-y-4">
-                  <h3 className="text-lg font-serif font-bold text-earth-900 border-b border-earth-100 pb-2">
-                    Getting There
-                  </h3>
-                  <div className="grid sm:grid-cols-2 gap-3">
-                    {stay.transport.map((item, idx) => (
-                      <div key={idx} className="bg-gradient-to-br from-earth-50 to-sage-50 p-4 rounded-xl text-sm text-earth-700 border border-earth-100">
-                        <Car className="inline-block mr-2 text-sage-500" size={16} />
-                        {item}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-              
-              {/* Reviews Section */}
-              {uniqueReviews.length > 0 && (
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between border-b border-earth-100 pb-2">
-                    <h3 className="text-lg font-serif font-bold text-earth-900">
-                      Guest Reviews
-                    </h3>
-                    {stay.reviewCount && (
-                      <span className="text-sm text-earth-500">
-                        {stay.reviewCount} reviews on Google
-                      </span>
-                    )}
-                  </div>
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    {uniqueReviews.slice(0, 4).map((review, idx) => (
-                      <ReviewCard key={idx} review={review} />
-                    ))}
-                  </div>
-                </div>
-              )}
-              
-              {/* Photo thumbnails */}
-              {visiblePhotos.length > 1 && (
-                <div className="space-y-4">
-                  <h3 className="text-lg font-serif font-bold text-earth-900 border-b border-earth-100 pb-2">
-                    Photos
-                  </h3>
-                  <div className="grid grid-cols-4 sm:grid-cols-5 gap-2">
-                    {visiblePhotos.slice(0, 10).map((photo, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => {
-                          setCurrentPhotoIndex(idx);
-                          setShowGallery(true);
-                        }}
-                        className="aspect-square rounded-lg overflow-hidden hover:opacity-80 transition-opacity"
-                      >
-                        <img
-                          src={photo.url}
-                          alt={`${stay.name} photo ${idx + 1}`}
-                          className="w-full h-full object-cover"
-                          loading="lazy"
-                          referrerPolicy="no-referrer"
-                        />
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
+            )}
+            
+            {/* Bottom padding for safe area */}
+            <div className="h-6" />
           </div>
         </div>
       </div>
-      
-      {/* Fullscreen Photo Gallery */}
-      {showGallery && (
-        <PhotoGallery
-          media={visibleMedia}
-          stayName={stay.name}
-          onClose={() => setShowGallery(false)}
-          initialIndex={currentPhotoIndex}
-        />
-      )}
-    </>
+    </div>
   );
 }

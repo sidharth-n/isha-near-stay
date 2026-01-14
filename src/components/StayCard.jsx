@@ -13,6 +13,19 @@ const getShortCategory = (category) => {
   return category.split('(')[0].trim().split(' ').slice(0, 2).join(' ');
 };
 
+// Deduplicate photos by comparing URL base (without size params)
+const deduplicatePhotos = (media) => {
+  if (!media) return [];
+  const seen = new Set();
+  return media.filter(m => {
+    if (m.type !== 'photo' || m.visible === false) return false;
+    const baseUrl = m.url.split('=')[0];
+    if (seen.has(baseUrl)) return false;
+    seen.add(baseUrl);
+    return true;
+  }).sort((a, b) => (a.order || 0) - (b.order || 0));
+};
+
 export default function StayCard({ stay, onClick }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [imageError, setImageError] = useState(false);
@@ -26,10 +39,8 @@ export default function StayCard({ stay, onClick }) {
     return 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=600';
   };
   
-  // Get visible photos sorted by order
-  const visiblePhotos = (stay.media || [])
-    .filter(m => m.visible !== false && m.type === 'photo')
-    .sort((a, b) => (a.order || 0) - (b.order || 0));
+  // Get unique visible photos (deduplicated)
+  const visiblePhotos = deduplicatePhotos(stay.media);
   
   const hasMultiplePhotos = visiblePhotos.length > 1;
   
