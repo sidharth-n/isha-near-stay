@@ -90,59 +90,66 @@ export default function Directory() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Category Filter Cards with Images */}
-        <div className="flex gap-3 overflow-x-auto pb-6 mb-4 scrollbar-hide -mx-4 px-4">
-          {filterCategories.map(cat => {
-            const count = categoryCounts[cat.key] || 0;
-            const isActive = filterKey === cat.key;
-            
-            return (
-              <button
-                key={cat.key}
-                onClick={() => setFilterKey(cat.key)}
-                className={`relative min-w-[100px] h-28 rounded-2xl overflow-hidden shrink-0 transition-all ${
-                  isActive 
-                    ? 'ring-2 ring-sage-500 ring-offset-2 scale-105 shadow-lg' 
-                    : 'hover:scale-102 shadow-sm'
-                }`}
-              >
-                {/* Background image or gradient */}
-                {cat.image ? (
-                  <img 
-                    src={cat.image} 
-                    alt={cat.label}
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                ) : (
-                  <div className="absolute inset-0 bg-gradient-to-br from-sage-500 to-sage-700" />
-                )}
-                
-                {/* Overlay */}
-                <div className={`absolute inset-0 ${isActive ? 'bg-black/40' : 'bg-black/50'} transition-colors`} />
-                
-                {/* Content */}
-                <div className="relative h-full flex flex-col items-center justify-center text-white p-2">
-                  <span className="text-sm font-bold whitespace-nowrap drop-shadow-md">{cat.label}</span>
-                  <span className="text-xs opacity-80 mt-1">{count} stays</span>
-                </div>
-              </button>
-            );
-          })}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        {/* Category Filter Cards with Images - Airbnb Style */}
+        <div className="overflow-x-auto scrollbar-hide -mx-4 px-4 py-2">
+          <div className="flex gap-4 pb-4">
+            {filterCategories.map(cat => {
+              const count = categoryCounts[cat.key] || 0;
+              const isActive = filterKey === cat.key;
+              
+              return (
+                <button
+                  key={cat.key}
+                  onClick={() => setFilterKey(cat.key)}
+                  className="flex flex-col items-center gap-2 shrink-0 group"
+                >
+                  {/* Image container with proper sizing */}
+                  <div className={`relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden transition-all duration-200 ${
+                    isActive 
+                      ? 'ring-2 ring-earth-800 ring-offset-2 shadow-lg' 
+                      : 'shadow-sm group-hover:shadow-md group-hover:scale-105'
+                  }`}>
+                    {cat.image ? (
+                      <img 
+                        src={cat.image} 
+                        alt={cat.label}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-br from-sage-500 to-sage-700" />
+                    )}
+                    {/* Subtle overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                  </div>
+                  
+                  {/* Label below image - Airbnb style */}
+                  <div className="text-center">
+                    <span className={`text-xs font-medium whitespace-nowrap transition-colors ${
+                      isActive ? 'text-earth-900' : 'text-earth-600 group-hover:text-earth-900'
+                    }`}>
+                      {cat.label}
+                    </span>
+                    <p className="text-[10px] text-earth-400">{count}</p>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
-        {/* Results count */}
-        <div className="mb-6">
-          <p className="text-earth-600">
-            Showing <span className="font-semibold text-earth-800">{filteredStays.length}</span> stays
+        {/* Results count - cleaner styling */}
+        <div className="mb-4 pt-2 border-t border-earth-100">
+          <p className="text-sm text-earth-500">
+            <span className="font-semibold text-earth-800">{filteredStays.length}</span> stays
             {filterKey !== 'All' && (
-              <span> in <span className="font-semibold text-sage-700">{filterKey}</span></span>
+              <span> in <span className="font-medium text-earth-700">{filterKey}</span></span>
             )}
           </p>
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {/* Grid - 2 columns on mobile like Airbnb */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
           {filteredStays.map(stay => (
             <StayCard 
               key={stay.id} 

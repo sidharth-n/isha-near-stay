@@ -91,11 +91,11 @@ export default function StayCard({ stay, onClick }) {
   return (
     <div 
       onClick={onClick}
-      className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer border border-earth-100 group"
+      className="cursor-pointer group"
     >
-      {/* Image Carousel Container */}
+      {/* Image Carousel Container - Airbnb style rounded corners */}
       <div 
-        className="relative h-52 overflow-hidden bg-earth-100"
+        className="relative aspect-[4/3] rounded-xl overflow-hidden bg-earth-100 mb-3"
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
@@ -103,36 +103,33 @@ export default function StayCard({ stay, onClick }) {
         <img 
           src={getCurrentImage()} 
           alt={stay.name}
-          className="w-full h-full object-cover transition-transform duration-300"
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           loading="lazy"
           referrerPolicy="no-referrer"
           onError={() => setImageError(true)}
         />
         
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
-        
-        {/* Left/Right carousel arrows */}
+        {/* Left/Right carousel arrows - visible on hover */}
         {hasMultiplePhotos && (
           <>
             <button 
               onClick={prevImage}
-              className="absolute left-2 top-1/2 -translate-y-1/2 p-1.5 bg-white/90 rounded-full text-earth-800 hover:bg-white transition-all opacity-0 group-hover:opacity-100 shadow-md"
+              className="absolute left-2 top-1/2 -translate-y-1/2 p-1.5 bg-white rounded-full text-earth-800 hover:scale-110 transition-all opacity-0 group-hover:opacity-100 shadow-md"
             >
-              <ChevronLeft size={18} />
+              <ChevronLeft size={16} />
             </button>
             <button 
               onClick={nextImage}
-              className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 bg-white/90 rounded-full text-earth-800 hover:bg-white transition-all opacity-0 group-hover:opacity-100 shadow-md"
+              className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 bg-white rounded-full text-earth-800 hover:scale-110 transition-all opacity-0 group-hover:opacity-100 shadow-md"
             >
-              <ChevronRight size={18} />
+              <ChevronRight size={16} />
             </button>
           </>
         )}
         
         {/* Image dots indicator */}
         {hasMultiplePhotos && (
-          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
             {visiblePhotos.slice(0, 5).map((_, idx) => (
               <button
                 key={idx}
@@ -142,65 +139,62 @@ export default function StayCard({ stay, onClick }) {
                 }}
                 className={`w-1.5 h-1.5 rounded-full transition-all ${
                   idx === currentImageIndex 
-                    ? 'bg-white w-3' 
-                    : 'bg-white/60 hover:bg-white/80'
+                    ? 'bg-white' 
+                    : 'bg-white/50'
                 }`}
               />
             ))}
-            {visiblePhotos.length > 5 && (
-              <span className="text-white/80 text-xs ml-1">+{visiblePhotos.length - 5}</span>
-            )}
           </div>
         )}
         
-        {/* Distance badge */}
-        <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-semibold text-earth-800 shadow-sm">
+        {/* Distance badge - top right */}
+        <div className="absolute top-2 right-2 bg-white/95 backdrop-blur-sm px-2 py-1 rounded-lg text-xs font-medium text-earth-700 shadow-sm">
           {stay.distance}
         </div>
-        
-        {/* Rating badge */}
-        {stay.rating && (
-          <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-sm px-2.5 py-1.5 rounded-full flex items-center gap-1 shadow-sm">
-            <Star size={14} className="fill-amber-400 text-amber-400" />
-            <span className="text-sm font-bold text-earth-900">{stay.rating}</span>
-            {stay.reviewCount && (
-              <span className="text-xs text-earth-500">({stay.reviewCount})</span>
-            )}
-          </div>
-        )}
       </div>
       
-      {/* Content */}
-      <div className="p-4">
-        <div className="text-xs font-semibold text-sage-600 mb-1.5 uppercase tracking-wider">
-          {getShortCategory(stay.category)}
+      {/* Content - Airbnb style clean info */}
+      <div className="space-y-1">
+        {/* Title and Rating row */}
+        <div className="flex items-start justify-between gap-2">
+          <h3 className="font-medium text-earth-900 line-clamp-1 text-[15px]">
+            {stay.name}
+          </h3>
+          {stay.rating && (
+            <div className="flex items-center gap-1 shrink-0">
+              <Star size={12} className="fill-earth-900 text-earth-900" />
+              <span className="text-sm text-earth-900">{stay.rating}</span>
+            </div>
+          )}
         </div>
-        <h3 className="text-lg font-serif font-bold text-earth-900 mb-3 line-clamp-1 group-hover:text-sage-700 transition-colors">
-          {stay.name}
-        </h3>
         
-        {/* Action buttons - Map on left, Call on right */}
-        <div className="flex items-center gap-2">
+        {/* Category */}
+        <p className="text-sm text-earth-500">
+          {getShortCategory(stay.category)}
+        </p>
+        
+        {/* Action buttons - compact */}
+        <div className="flex items-center gap-2 pt-2">
           {stay.mapLink && (
             <button 
-              className="flex-1 bg-sage-100 text-sage-800 py-2.5 px-4 rounded-xl text-sm font-semibold hover:bg-sage-200 transition-colors flex items-center justify-center gap-2"
+              className="flex-1 bg-earth-100 text-earth-700 py-2 rounded-lg text-sm font-medium hover:bg-earth-200 transition-colors flex items-center justify-center gap-1.5"
               onClick={(e) => {
                 e.stopPropagation();
                 window.open(stay.mapLink, '_blank');
               }}
             >
-              <MapPin size={15} />
+              <MapPin size={14} />
               Map
             </button>
           )}
           <button 
-            className="flex-1 bg-gradient-to-r from-earth-800 to-earth-900 text-white py-2.5 px-4 rounded-xl text-sm font-semibold hover:from-earth-900 hover:to-black transition-all flex items-center justify-center gap-2 shadow-sm"
+            className="flex-1 bg-earth-900 text-white py-2 rounded-lg text-sm font-medium hover:bg-black transition-colors flex items-center justify-center gap-1.5"
             onClick={(e) => {
               e.stopPropagation();
               window.open(`tel:${stay.contact.split('/')[0].trim()}`, '_self');
             }}
           >
-            <Phone size={15} />
+            <Phone size={14} />
             Call
           </button>
         </div>
