@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 import StayCard from '../components/StayCard';
 import StayModal from '../components/StayModal';
 import staysData from '../data/stays.json';
@@ -7,7 +8,7 @@ import { Search, Home, Building2, Trees, Hotel, Users, Warehouse } from 'lucide-
 
 // Filter category definitions with short names, icons, and images
 const filterCategories = [
-  { key: 'All', label: 'All', icon: null, image: null },
+  { key: 'All', label: 'All Stays', icon: null, image: '/images/category-all.png' },
   { key: 'Inside Isha', label: 'Inside Isha', icon: Home, image: '/images/category-inside-isha.png', matcher: (cat) => cat.includes('Inside Isha') },
   { key: 'Homestay', label: 'Homestay', icon: Home, image: '/images/category-homestay.png', matcher: (cat) => cat.includes('Home Stay') },
   { key: 'Dorms', label: 'Dorms', icon: Users, image: '/images/category-dorm.png', matcher: (cat) => cat.includes('Dorm') },
@@ -55,7 +56,7 @@ export default function Directory() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-earth-50 pb-20">
+    <div className="min-h-screen bg-earth-50">
       <Navbar />
       
       {/* Hero / Header with background image */}
@@ -163,6 +164,83 @@ export default function Directory() {
           </div>
         )}
       </div>
+
+      {/* About Isha Section */}
+      <div className="bg-white py-16 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-2xl md:text-3xl font-serif font-bold text-earth-900 mb-4">
+            About Isha Yoga Center
+          </h2>
+          <p className="text-earth-600 leading-relaxed mb-6">
+            Nestled at the foothills of the Velliangiri Mountains in Coimbatore, Tamil Nadu, 
+            Isha Yoga Center is a powerful space for spiritual seekers. Home to the iconic 
+            Adiyogi statue and the consecrated Dhyanalinga, millions visit every year for 
+            yoga programs, meditation, and inner transformation.
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <a 
+              href="https://isha.sadhguru.org" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-earth-800 text-white px-6 py-3 rounded-full font-semibold hover:bg-earth-900 transition-colors"
+            >
+              Visit Isha Foundation
+            </a>
+            <a 
+              href="https://cottage.isha.in" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-sage-100 text-sage-800 px-6 py-3 rounded-full font-semibold hover:bg-sage-200 transition-colors"
+            >
+              Book Isha Cottages
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Blog Preview Section */}
+      <div className="bg-earth-100 py-16 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-serif font-bold text-earth-900 mb-2">
+              Spiritual Insights
+            </h2>
+            <p className="text-earth-600">Wisdom for your journey</p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                title: "Preparing for Your First Isha Visit",
+                excerpt: "Everything you need to know before visiting the Isha Yoga Center for the first time.",
+                category: "Guide"
+              },
+              {
+                title: "The Significance of Dhyanalinga",
+                excerpt: "Understanding the world's only complete, consecrated linga and its spiritual importance.",
+                category: "Spirituality"
+              },
+              {
+                title: "Sacred Sites Near Coimbatore",
+                excerpt: "Explore the spiritual heritage and ancient temples in the Velliangiri mountain region.",
+                category: "Exploration"
+              }
+            ].map((blog, idx) => (
+              <div key={idx} className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+                <span className="text-xs font-semibold text-sage-600 uppercase tracking-wider">{blog.category}</span>
+                <h3 className="font-serif font-bold text-earth-900 mt-2 mb-3">{blog.title}</h3>
+                <p className="text-earth-600 text-sm line-clamp-2">{blog.excerpt}</p>
+                <button className="mt-4 text-sage-700 font-medium text-sm hover:text-sage-800 transition-colors">
+                  Coming Soon →
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <Footer />
 
       {/* Modal */}
       {selectedStay && (
