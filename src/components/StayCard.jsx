@@ -91,11 +91,11 @@ export default function StayCard({ stay, onClick }) {
   return (
     <div 
       onClick={onClick}
-      className="cursor-pointer group"
+      className="cursor-pointer group bg-white rounded-2xl p-2 border border-earth-100 shadow-sm hover:shadow-md transition-shadow"
     >
-      {/* Image Carousel Container - Airbnb style rounded corners */}
+      {/* Image Carousel Container */}
       <div 
-        className="relative aspect-[4/3] rounded-xl overflow-hidden bg-earth-100 mb-3"
+        className="relative aspect-[4/3] rounded-xl overflow-hidden bg-earth-100 mb-2"
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}

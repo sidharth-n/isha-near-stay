@@ -121,7 +121,7 @@ export default function Navbar() {
             <p className="text-sage-800 text-sm font-medium mb-2">Join our community</p>
             <p className="text-sage-600 text-xs mb-3">Connect with spiritual seekers</p>
             <a 
-              href="https://chat.whatsapp.com/your-group-link" 
+              href="https://chat.whatsapp.com/I6StiYivCz56B61Nq3e3hG" 
               target="_blank"
               rel="noopener noreferrer"
               className="block text-center bg-sage-700 text-white py-2 rounded-lg text-sm font-semibold hover:bg-sage-800 transition-colors"

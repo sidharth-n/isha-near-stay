@@ -20,7 +20,7 @@ export default function Footer() {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <a 
-              href="https://chat.whatsapp.com/your-group-link" 
+              href="https://chat.whatsapp.com/I6StiYivCz56B61Nq3e3hG" 
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-white text-sage-800 px-6 py-3 rounded-full font-semibold hover:bg-sage-50 transition-colors"
