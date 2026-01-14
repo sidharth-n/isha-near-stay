@@ -81,7 +81,7 @@ export default function Directory() {
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-earth-400" size={20} />
             <input
               type="text"
-              placeholder="Search stays, distance (e.g. 2 kms)..."
+              placeholder="Search stays.."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full py-4 pl-12 pr-10 rounded-full text-earth-900 placeholder:text-earth-400 focus:outline-none focus:ring-2 focus:ring-sage-400 shadow-lg text-base"
