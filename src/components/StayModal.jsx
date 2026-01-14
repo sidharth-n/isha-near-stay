@@ -85,8 +85,45 @@ export default function StayModal({ stay, onClose }) {
   const onTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
     const distance = touchStart - touchEnd;
-    if (distance > minSwipeDistance && hasMultiplePhotos) nextPhoto();
-    if (distance < -minSwipeDistance && hasMultiplePhotos) prevPhoto();
+    if (distance > minSwipeDistance && hasMultiplePhotos) {
+      nextPhoto();
+      setIsAutoPaused(true); // Pause auto-swipe on manual interaction
+    }
+    if (distance < -minSwipeDistance && hasMultiplePhotos) {
+      prevPhoto();
+      setIsAutoPaused(true);
+    }
+  };
+  
+  // Auto-swipe timer (like Airbnb)
+  const [isAutoPaused, setIsAutoPaused] = useState(false);
+  
+  useEffect(() => {
+    if (!hasMultiplePhotos || isAutoPaused) return;
+    
+    const timer = setInterval(() => {
+      setCurrentPhotoIndex((prev) => (prev + 1) % visiblePhotos.length);
+    }, 4000); // Change photo every 4 seconds
+    
+    return () => clearInterval(timer);
+  }, [hasMultiplePhotos, isAutoPaused, visiblePhotos.length]);
+  
+  // Resume auto-swipe after 10 seconds of no interaction
+  useEffect(() => {
+    if (!isAutoPaused) return;
+    const resumeTimer = setTimeout(() => setIsAutoPaused(false), 10000);
+    return () => clearTimeout(resumeTimer);
+  }, [isAutoPaused]);
+  
+  // Manual navigation with pause
+  const handlePrevPhoto = () => {
+    prevPhoto();
+    setIsAutoPaused(true);
+  };
+  
+  const handleNextPhoto = () => {
+    nextPhoto();
+    setIsAutoPaused(true);
   };
   
   // Lock body scroll when modal is open
@@ -128,20 +165,20 @@ export default function StayModal({ stay, onClose }) {
             <X size={20} />
           </button>
           
-          {/* Desktop navigation arrows */}
+          {/* Navigation arrows - visible on all devices */}
           {hasMultiplePhotos && (
             <>
               <button 
-                onClick={prevPhoto}
-                className="hidden md:flex absolute left-3 top-1/2 -translate-y-1/2 p-2 bg-white/90 rounded-full text-earth-800 hover:bg-white transition-colors shadow-lg"
+                onClick={handlePrevPhoto}
+                className="absolute left-3 top-1/2 -translate-y-1/2 p-2.5 bg-white/90 rounded-full text-earth-800 hover:bg-white active:scale-95 transition-all shadow-lg z-10"
               >
-                <ChevronLeft size={20} />
+                <ChevronLeft size={22} />
               </button>
               <button 
-                onClick={nextPhoto}
-                className="hidden md:flex absolute right-3 top-1/2 -translate-y-1/2 p-2 bg-white/90 rounded-full text-earth-800 hover:bg-white transition-colors shadow-lg"
+                onClick={handleNextPhoto}
+                className="absolute right-3 top-1/2 -translate-y-1/2 p-2.5 bg-white/90 rounded-full text-earth-800 hover:bg-white active:scale-95 transition-all shadow-lg z-10"
               >
-                <ChevronRight size={20} />
+                <ChevronRight size={22} />
               </button>
             </>
           )}
