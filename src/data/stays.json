@@ -25,7 +25,68 @@
     "reviewCount": null,
     "website": null,
     "address": null,
-    "media": [],
+    "media": [
+      {
+        "order": 1,
+        "type": "photo",
+        "url": "/images/Alayam-Standard-1-1536x1024.jpeg",
+        "visible": true
+      },
+      {
+        "order": 2,
+        "type": "photo",
+        "url": "/images/nadhi-deluxe.jpeg",
+        "visible": true
+      },
+      {
+        "order": 3,
+        "type": "photo",
+        "url": "/images/Nadi-Executive-2-1536x1024.jpg",
+        "visible": true
+      },
+      {
+        "order": 4,
+        "type": "photo",
+        "url": "/images/Nadi-Family-2-1536x1024.jpg",
+        "visible": true
+      },
+      {
+        "order": 5,
+        "type": "photo",
+        "url": "/images/Nalanda-Deluxe-1-1536x1024.jpg",
+        "visible": true
+      },
+      {
+        "order": 6,
+        "type": "photo",
+        "url": "/images/Nalanda-Familysuite-1-1536x1024.jpg",
+        "visible": true
+      },
+      {
+        "order": 7,
+        "type": "photo",
+        "url": "/images/Brahmaputra-Standard-1-1536x1024.jpg",
+        "visible": true
+      },
+      {
+        "order": 8,
+        "type": "photo",
+        "url": "/images/Shivapadam3-Standard-1-1536x1024.jpg",
+        "visible": true
+      },
+      {
+        "order": 9,
+        "type": "photo",
+        "url": "/images/Shivapadam4-Family-Cottage-1536x1024.jpg",
+        "visible": true
+      },
+      {
+        "order": 10,
+        "type": "photo",
+        "url": "/images/Shivapadam4-Standard-Room-1536x1024.jpg",
+        "visible": true
+      }
+    ],
     "reviews": []
   },
   {
