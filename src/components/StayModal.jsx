@@ -280,7 +280,50 @@ export default function StayModal({ stay, onClose }) {
                   <Phone className="shrink-0 mt-0.5 text-sage-500" size={16} />
                   <div>
                     <span className="font-medium text-earth-600">Contact</span>
-                    <p className="text-earth-900">{stay.contact.replace(/<br\/>/g, ', ')}</p>
+                    <div className="text-earth-900 space-y-1">
+                      {stay.contact.split(/<br\/?>/g).map((line, idx) => {
+                        // Check for phone numbers
+                        const phoneMatch = line.match(/[\+\d\-\s\/]+\d{4,}/g);
+                        const emailMatch = line.match(/[\w\.-]+@[\w\.-]+\.\w+/g);
+                        
+                        if (phoneMatch) {
+                          return (
+                            <div key={idx} className="flex flex-wrap gap-2">
+                              {phoneMatch.map((phone, pIdx) => (
+                                <a 
+                                  key={pIdx}
+                                  href={`tel:${phone.replace(/[\s\/]/g, '')}`}
+                                  className="inline-flex items-center gap-1 bg-sage-100 text-sage-800 px-3 py-1.5 rounded-lg text-sm font-medium hover:bg-sage-200 transition-colors"
+                                  onClick={(e) => e.stopPropagation()}
+                                >
+                                  <Phone size={14} />
+                                  {phone.trim()}
+                                </a>
+                              ))}
+                            </div>
+                          );
+                        }
+                        
+                        if (emailMatch) {
+                          return (
+                            <div key={idx}>
+                              {emailMatch.map((email, eIdx) => (
+                                <a 
+                                  key={eIdx}
+                                  href={`mailto:${email}`}
+                                  className="text-sage-700 hover:underline text-sm"
+                                  onClick={(e) => e.stopPropagation()}
+                                >
+                                  {line}
+                                </a>
+                              ))}
+                            </div>
+                          );
+                        }
+                        
+                        return <p key={idx} className="text-sm">{line}</p>;
+                      })}
+                    </div>
                   </div>
                 </div>
                 
