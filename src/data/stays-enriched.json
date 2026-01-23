@@ -539,19 +539,19 @@
         "order": 8,
         "type": "photo",
         "url": "https://lh3.googleusercontent.com/a/ACg8ocJy66mlOqVV8pTISOwPrA5nRCDDhcQxtSryuwLy5kTDeyK17jE=w800-h600-p-rp-mo-br100",
-        "visible": true
+        "visible": false
       },
       {
         "order": 9,
         "type": "photo",
         "url": "https://lh3.googleusercontent.com/a/ACg8ocJWeK4IFvCk_1T9VL26P9JVfHHj30kK_uO2bPHu6m1bf5hs2w=w800-h600-p-rp-mo-br100",
-        "visible": true
+        "visible": false
       },
       {
         "order": 10,
         "type": "photo",
         "url": "https://lh3.googleusercontent.com/a/ACg8ocLtuC9MshCcIQ_2lB30v4zEtA_tuQpQ67iDaRQsKX3kDIPtmw=w800-h600-p-rp-mo-ba2-br100",
-        "visible": true
+        "visible": false
       }
     ],
     "reviews": [
